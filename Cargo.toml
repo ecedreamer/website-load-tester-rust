@@ -1,0 +1,10 @@
+[package]
+name = "web_load_tester"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1.39.3", features = ["full"] }
+yaml-rust2 = "0.9.0"
+reqwest = "0.12.7"
+futures = "0.3.30"
