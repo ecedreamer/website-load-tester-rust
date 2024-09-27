@@ -9,7 +9,7 @@ This is a simple web application load tester for testing the load handling capac
 
 ### Usase
 1. Clone the project
-2. Define your endpoints in the endpoint_config.yml
+2. Define your endpoints in the app_config.yml
 3. Run the project in release mode.
     ```bash
     $ cargo run --release
