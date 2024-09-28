@@ -4,10 +4,12 @@ endpoints:
   - path: /
     method: GET
     description: Home Page
+    iteration: 1000
 
   - path: /contact
     method: GET
     description: Contact Page
+    iteration: 150
 
 
 
