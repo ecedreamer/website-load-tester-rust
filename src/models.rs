@@ -15,6 +15,7 @@ pub struct TestResult {
     pub request_count: usize,
     pub success_response_count: usize,
     pub failed_response_count: usize,
+    pub throughput: i32,
     pub duration: f64
 }
 
@@ -25,6 +26,7 @@ impl TestResult {
             request_count,
             success_response_count: 0,
             failed_response_count: 0,
+            throughput: 0,
             duration: 0.0
         }
     }

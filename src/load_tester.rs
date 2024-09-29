@@ -47,6 +47,7 @@ pub async fn test_load(endpoints: Vec<Endpoint>) {
         match result {
             Ok(mut test_result) => {
                 test_result.duration = elapsed.as_secs_f64();
+                test_result.throughput = (test_result.success_response_count as f64 / test_result.duration) as i32;
                 println!("{:?}", test_result)
             },
             Err(error) => println!("Error: {}", error),
