@@ -13,16 +13,18 @@ pub struct Endpoint {
 pub struct TestResult {
     pub endpoint: Endpoint,
     pub request_count: usize,
-    pub response_count: usize,
+    pub success_response_count: usize,
+    pub failed_response_count: usize,
     pub duration: f64
 }
 
 impl TestResult {
-    pub fn new(endpoint: Endpoint, request_count: usize, response_count: usize) -> Self {
+    pub fn new(endpoint: Endpoint, request_count: usize) -> Self {
         Self {
             endpoint,
             request_count,
-            response_count,
+            success_response_count: 0,
+            failed_response_count: 0,
             duration: 0.0
         }
     }

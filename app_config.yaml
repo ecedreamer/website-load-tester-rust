@@ -10,8 +10,3 @@ endpoints:
     method: GET
     description: Contact Page
     iteration: 150
-
-
-
-
-

@@ -5,7 +5,7 @@ use crate::models::{Endpoint, TestResult};
 pub async fn test_endpoint_load(end_point: Endpoint) -> Result<TestResult, String> {
     let client = reqwest::Client::new();
     let iteration = end_point.iteration;
-    let mut test_result = TestResult::new(end_point, iteration, 0);
+    let mut test_result = TestResult::new(end_point, iteration);
     let mut handles = Vec::with_capacity(iteration);
     for _ in 0..iteration {
         let client = client.clone();
@@ -13,7 +13,13 @@ pub async fn test_endpoint_load(end_point: Endpoint) -> Result<TestResult, Strin
         let handle = tokio::spawn(async move {
             let result = client.get(path).send().await;
             match result {
-                Ok(response) => Some(1),
+                Ok(response) => {
+                    if response.status().is_success() {
+                        Some(1)
+                    } else {
+                        None
+                    }
+                },
                 Err(_) => None
             }
         });
@@ -23,7 +29,9 @@ pub async fn test_endpoint_load(end_point: Endpoint) -> Result<TestResult, Strin
     let results = futures::future::join_all(handles).await;
     for res in results {
         if let Ok(Some(success)) = res {
-            test_result.response_count += success;
+            test_result.success_response_count += success;
+        } else {
+            test_result.failed_response_count += 1;
         }
     }
 
