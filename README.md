@@ -4,8 +4,15 @@ This is a simple web application load tester for testing the load handling capac
 ### Tech Stacks Used
 1. Rust Programming Language
 2. Tokio for Async Runtime
-3. Reqwest as request client
+3. Reqwest as web client
 
+#### Cargo.toml
+```toml
+tokio = { version = "1.39.3", features = ["full"] }
+yaml-rust2 = "0.9.0"
+reqwest = "0.12.7"
+futures = "0.3.30"
+```
 
 ### Usase
 1. Clone the project
