@@ -9,4 +9,4 @@ endpoints:
   - path: /contact
     method: GET
     description: Contact Page
-    iteration: 150
+    iteration: 1500
